@@ -7,6 +7,13 @@ class UsersController < ApplicationController
     )
 
     user = authentication.authenticate_new_user
+
+    # if user saved to the db, cool. Otherwise, respond with a 400
+    if user.persisted?
+      render json: user
+    else
+      render json: user.errors, status: 400
+    end
   end
 
   private
