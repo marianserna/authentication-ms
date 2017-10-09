@@ -54,5 +54,7 @@ class Authentication
       expires_in: Doorkeeper.configuration.access_token_expires_in,
       use_refresh_token: true
     )
+
+    raise access_token.inspect
   end
 end
