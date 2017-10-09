@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   def create
     authentication = Authentication.new(
-      ENV.fetch('APP_ID'),
-      ENV.fetch('APP_SECRET'),
+      ENV.fetch('CLIENT_ID'),
+      ENV.fetch('CLIENT_SECRET'),
       user_params
     )
+
+    user = authentication.authenticate_new_user
   end
 
   private
