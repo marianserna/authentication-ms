@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 
   # new happens in the front-end
   resources :users, only: [:create]
-
+  resources :sessions, only: [:create]
 end

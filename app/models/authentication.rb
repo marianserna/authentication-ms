@@ -27,6 +27,19 @@ class Authentication
 
   # Use case 2: authenticate with password
   def authenticate_with_password
+    # step 1: Find user by email
+    self.user = User.find_by(email: params[:email])
+    return false if user.blank?
+
+    # step 2: Check if password matches
+    self.user = self.user.authenticate(params[:password])
+    return false if user.blank?
+
+    # step 3: Get oauth token for user & return user
+    grant_access
+    fetch_oauth_token
+
+    self.user
   end
 
   private
