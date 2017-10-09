@@ -4,8 +4,10 @@ class User < ApplicationRecord
 
   ## Attributes       ############################
 
+  attr_accessor :access_token
+
   ## Extensions       ############################
-  
+
   # triggers password digest when password is set. It provides an authenticate method to check if a password is correct
   has_secure_password
 

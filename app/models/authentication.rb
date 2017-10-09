@@ -55,6 +55,6 @@ class Authentication
       use_refresh_token: true
     )
 
-    raise access_token.inspect
+    self.user.access_token = access_token
   end
 end
