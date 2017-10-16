@@ -42,6 +42,28 @@ class Authentication
     self.user
   end
 
+  # Use case 3: authenticate with provider
+  def authenticate_with_provider
+    # step 1: Use email to figure out if user exists
+    self.user = User.find_by(email: params[:email])
+
+    # step 2: Create new user if non-existent
+    if self.user.blank?
+      self.user = User.create!(
+        name: params[:name],
+        email: params[:email],
+        # SecureRandom.hex -> Generates fake random password to get across has secure password (requires password to be present)
+        password: SecureRandom.hex(30)
+      )
+    end
+
+    # step 3: Get oauth token for user & return user
+    grant_access
+    fetch_oauth_token
+
+    self.user
+  end
+
   private
 
   def grant_access
