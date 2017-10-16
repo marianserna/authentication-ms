@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :doorkeeper_authorize!, only: [:show]
+
   def create
     authentication = Authentication.new(
       ENV.fetch('CLIENT_ID'),
@@ -14,6 +17,10 @@ class UsersController < ApplicationController
     else
       render json: user.errors, status: 400
     end
+  end
+
+  def show
+    render json: current_user
   end
 
   private

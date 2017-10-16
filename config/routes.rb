@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   # New happens in the front-end
   resources :users, only: [:create]
+
+  resource :user, only: [:show]
+
   resources :sessions, only: [:create]
 
   # Route for OmniAuth to return info from provider
