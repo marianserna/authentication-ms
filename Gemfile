@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'doorkeeper', '~> 4.2', '>= 4.2.6'
 gem 'active_model_serializers', '~> 0.10.6'
 gem 'omniauth-facebook', '~> 4.0'
+gem 'rack-cors', '~> 1.0', '>= 1.0.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
