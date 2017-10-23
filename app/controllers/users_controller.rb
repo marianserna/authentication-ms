@@ -26,7 +26,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    # strong params validate your params 🐷
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :image)
   end
 end

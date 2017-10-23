@@ -48,10 +48,12 @@ class Authentication
     self.user = User.find_by(email: params[:email])
 
     # step 2: Create new user if non-existent
+    # :info was already accessed in ConnectionsController auth_hash method, that's why I can do image: params[:image] directly
     if self.user.blank?
       self.user = User.create!(
         name: params[:name],
         email: params[:email],
+        image: params[:image],
         # SecureRandom.hex -> Generates fake random password to get across has secure password (requires password to be present)
         password: SecureRandom.hex(30)
       )
