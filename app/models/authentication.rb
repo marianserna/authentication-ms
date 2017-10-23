@@ -53,7 +53,7 @@ class Authentication
       self.user = User.create!(
         name: params[:name],
         email: params[:email],
-        image: params[:image],
+        remote_image_url: params[:image],
         # SecureRandom.hex -> Generates fake random password to get across has secure password (requires password to be present)
         password: SecureRandom.hex(30)
       )
