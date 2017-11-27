@@ -23,6 +23,12 @@ class UsersController < ApplicationController
     render json: current_user
   end
 
+  def names
+    users = User.where(id: params[:ids]).pluck(:id, :name).to_h
+
+    render json: users
+  end
+
   private
 
   def user_params

@@ -3,8 +3,13 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   # New happens in the front-end
-  resources :users, only: [:create]
+  resources :users, only: [:create] do
+  	collection do
+  		post :names
+  	end
+  end
 
+  # Don't need to pass id as in a normal user#show, it's found based on the token passed in
   resource :user, only: [:show]
 
   resources :sessions, only: [:create]
