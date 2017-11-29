@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   ## Validations      ############################
   validates :name, :email, :image, presence: true
+  validates :email, uniqueness: true
 
   ## Callbacks        ############################
 

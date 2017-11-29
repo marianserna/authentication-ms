@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if user.persisted?
       render json: user
     else
-      render json: user.errors, status: 400
+      render json: {error: user.errors.full_messages}, status: 400
     end
   end
 
