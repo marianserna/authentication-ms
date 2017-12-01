@@ -5,7 +5,7 @@ CarrierWave.configure do |config|
       provider:              'AWS',
       aws_access_key_id:     ENV.fetch('AWS_ACCESS_KEY_ID'),
       aws_secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
-      region:                'eu-east-1'
+      region:                'us-east-1'
     }
     config.fog_directory  = 'wanderersapp'
     config.fog_attributes = { cache_control: "public, max-age=#{365.day.to_i}" }
