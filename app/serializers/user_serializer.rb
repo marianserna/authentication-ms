@@ -10,6 +10,8 @@ class UserSerializer < ActiveModel::Serializer
   def image
     url = object.image.thumb.url
 
+    return nil if url.nil?
+
     return url if url.start_with?('http')
     url.prepend('http://localhost:3000')
   end

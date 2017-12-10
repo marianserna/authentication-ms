@@ -15,7 +15,7 @@ class User < ApplicationRecord
   ## Relationships    ############################
 
   ## Validations      ############################
-  validates :name, :email, :image, presence: true
+  validates :name, :email, presence: true
   validates :email, uniqueness: true
 
   ## Callbacks        ############################

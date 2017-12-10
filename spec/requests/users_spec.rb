@@ -29,4 +29,22 @@ describe 'users controller' do
       expect(User.count).to eq(1)
     end
   end
+
+  describe 'names' do
+    it 'provides the names of the user ids passed' do
+      user = create(:user)
+
+      post '/users/names', {
+        params: {
+          ids: [user.id]
+        }
+      }
+
+      expect(response.status).to eq(200)
+
+      parsed_response = JSON.parse(response.body)
+      expect(parsed_response[user.id.to_s]).to eq("Pedro Pedrosa")
+    end
+  end
+
 end
